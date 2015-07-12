@@ -11,3 +11,6 @@ twbs:bootstrap
 underscore
 iron:router
 sacha:spin
+jquery
+juliancwirko:s-alert
+juliancwirko:s-alert-bouncyflip
