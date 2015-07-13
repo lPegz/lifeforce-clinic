@@ -5,7 +5,7 @@ Template.customerCreate.events({
       sAlert.error('Insira o nome do cliente!');
       $('#customer-name').focus();
     } else {
-      Customers.add({
+      Customers.insert({
         name: customerName
       });
     }
