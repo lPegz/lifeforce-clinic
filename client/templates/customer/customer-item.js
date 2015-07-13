@@ -1,8 +1,8 @@
 Template.customerItem.events({
   'click .remove-customer' : function (e) {
-    var customerName = $(e.target).find('.customer-name').val();
-    console.log($(e.target).siblings('.customer-name'));
-    console.log(Customers.findOne({name : customerName}));
-    // Customers.remove({_id: idToRemove });
+    e.preventDefault();
+    var customerName = $(e.target).parent().parent().find('.customer-name').text(),
+        customerToDelete = Customers.findOne({name : customerName},{_id:1, name:0});
+    Customers.remove({_id:customerToDelete._id});
   }
 });
