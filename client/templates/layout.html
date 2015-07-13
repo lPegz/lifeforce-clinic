@@ -1,0 +1,18 @@
+<template name="layout">
+  {{> sAlert }}
+  <div class="container">
+    <header class="navbar navbar-default" role="navigation">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/">LifeForce - Clínica</a>
+      </div>
+      <ul class="nav navbar-nav">
+      <li><a href="/schedule">Agenda</a></li>
+      <li><a href="/customer/create">Cadastro de Cliente</a></li>
+      <li><a href="/treatment/create">Cadastro de Tratamento</a></li>
+      </ul>
+    </header>
+    <div id="main">
+      {{> yield}}
+    </div>
+  </div>
+</template>
