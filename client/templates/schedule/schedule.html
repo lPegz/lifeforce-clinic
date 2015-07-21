@@ -1,0 +1,14 @@
+<template name="schedule">
+  <ul class="col-xs-12 nav nav-tabs" id="scheduleTab">
+    <li><a href="#monthly" data-toggle="tab">Mensal</a></li>
+    <li><a href="#weekly" data-toggle="tab">Semanal</a></li>
+    <li><a href="#daily" data-toggle="tab">Diaria</a></li>
+  </ul>
+  <div class="tab-content">
+    <div class="tab-pane" id="monthly">
+      {{> scheduleMonth}}
+    </div>
+      <div class="tab-pane" id="weekly"></div>
+      <div class="tab-pane" id="daily"></div>
+  </div>
+</template>

@@ -1,0 +1,32 @@
+<template name="scheduleMonth">
+  <table class="table-striped">
+    <thead>
+        <tr>
+          <th>{{currentMonth}}</th>
+        </tr>
+    </thead>
+    <tbody>
+      <tr class= "content row-fluid show-grid">
+        {{#each daysPt1}}
+          <td class="col-xs-1 span1">
+            {{dayNumber}}
+          </td>
+        {{/each}}
+      </tr>
+      <tr class= "content row-fluid show-grid">
+        {{#each daysPt2}}
+          <td class="col-xs-1 span1">
+            {{dayNumber}}
+          </td>
+        {{/each}}
+      </tr>
+      <tr class= "content row-fluid show-grid">
+        {{#each daysPt3}}
+          <td class="col-xs-1 span1">
+            {{dayNumber}}
+          </td>
+        {{/each}}
+      </tr>
+    </tbody>
+  </table>
+</template>
