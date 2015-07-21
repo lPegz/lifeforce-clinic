@@ -14,3 +14,9 @@ Template.customerCreate.events({
     }
   }
 });
+
+Template.customerCreate.onRendered(function() {
+  $('.phone').inputmask({
+    'mask': '(99) 99999-9999'
+  });
+});
