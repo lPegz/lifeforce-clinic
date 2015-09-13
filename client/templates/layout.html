@@ -4,12 +4,16 @@
     <header class="navbar navbar-default" role="navigation">
       <div class="navbar-header">
         <a class="navbar-brand" href="/">LifeForce - Clínica</a>
+        <button class="navbar-toggle pull-right collapsed glyphicon glyphicon-th-list" type="button" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
+        </button>
       </div>
-      <ul class="nav navbar-nav">
-      <li><a href="/schedule">Agenda</a></li>
-      <li><a href="/customer/create">Cadastro de Cliente</a></li>
-      <li><a href="/treatment/create">Cadastro de Tratamento</a></li>
-      </ul>
+      <nav style="height: 1px;" aria-expanded="false" id="bs-navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="/schedule">Agenda</a></li>
+          <li><a href="/customer/create">Clientes</a></li>
+          <li><a href="/treatment/create">Tratamentos</a></li>
+        </ul>
+      </nav>
     </header>
     <div id="main">
       {{> yield}}

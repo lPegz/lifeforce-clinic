@@ -1,3 +1,8 @@
-Template.schedule.onRendered(function() {
-  $('#myTab a:last').tab('show');
+Template.schedule.helpers({
+    options: function() {
+        return {
+            defaultView: 'basicWeek',
+            schedulerLicenseKey: 'GPL-My-Project-Is-Open-Source'
+        };
+    }
 });

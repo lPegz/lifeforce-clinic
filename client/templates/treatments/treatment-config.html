@@ -1,0 +1,32 @@
+<template name="treatmentConfig">
+  {{> treatmentAdd }}
+</template>
+
+
+<template name="treatmentAdd">
+  <form class="col-md-12 form-horizontal">
+    <div class="form-group">
+      <label for="treatment-desc">Tratamento: </label>
+      <input type="text" id="treatment-desc" class="form-control description" placeholder="Insira a descrição do tratamento"/>
+      {{> treatmentTypeCombo }}
+      <label for="base-price">Valor Base: </label>
+      <input type="value" id="base-price" class="form-control price base-price col-md-6" placeholder="Insira o valor base"/>
+      <label for="disc-price">Valor Desconto: </label>
+      <input type="value" id="disc-price" class="form-control price disc-price col-md-6" placeholder="Insira o valor com desconto"/>
+      <button type="submit" class="btn btn-default save-treatment">Salvar</button>
+    </div>
+  </form>
+</template>
+
+<template name="treatmentTypeCombo">
+  <br>
+  <div class="form-group col-md-12">
+            <select class="form-control">
+              <option value="" selected="selected">Selecione um tipo</option>
+              <option value="RPG">RPG</option>
+              <option value="FISIO">Fisioterapia</option>
+              <option value="PILATES">Pilates</option>
+              <option value="ESTETICA">Estética</option>
+            </select>
+          </div>
+</template>

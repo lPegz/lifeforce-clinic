@@ -9,7 +9,8 @@
 
 body {
   background: #eee;
-  color: #666666; }
+  color: #666666;
+}
 
 #main {
   position: relative;
@@ -136,6 +137,15 @@ body {
   10% {opacity: 1;}
   90% {opacity: 1;}
   100% {opacity: 0;}
+}
+
+.gutter {
+  padding-bottom: 5px
+}
+
+.gutter .gutter-b {
+  padding-bottom: 5px;
+  padding-right: 5px;
 }
 
 .errors{
