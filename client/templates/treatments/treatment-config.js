@@ -12,20 +12,43 @@ Template.treatmentAdd.onRendered(function() {
 Template.treatmentAdd.events({
   'submit form': function() {
     var treatmentDescription = $('.description').val(),
-      treatmentBasePrice = $('.base-price').val(),
-      treatmentDiscountedPrice = $('.disc-price').val(),
-      type = $('.disc-price').val();
+        treatmentType = $('option:selected').val(),
+        treatmentBasePrice = $('.base-price').val(),
+        treatmentDiscountedPrice = $('.disc-price').val();
     if (_.isEmpty(treatmentDescription) || _.isNull(treatmentDescription) || _.isUndefined(
         treatmentDescription)) {
       sAlert.error('Insira o nome do tratamento!');
       $('#').focus();
     } else {
-      Treatment.insert({
-        name: treatmentDescription,
-        type: treatmentType,
-        treatmentBasePrice: treatmentBasePrice,
-        treatmentDiscountedPrice: treatmentDiscountedPrice,
-      });
+      console.log(treatmentType);
+      Treatments.insert(
+        {
+          name: treatmentDescription,
+          type: treatmentType,
+          basePrice: treatmentBasePrice,
+          discountedPrice: treatmentDiscountedPrice,
+        });
     }
+  }
+});
+
+Template.treatmentList.helpers({
+  treatmentFetch: function () {
+    return Treatments.find();
+  }
+});
+
+Template.treatmentItem.events({
+  "click .edit-treatment": function (e) {
+    e.preventDefault();
+    var treatmentName = $(e.target).parent().parent().next().find('.treatment-name').text(),
+        treatmentToEdit = Treatments.findOne({name : treatmentName},{_id:1, name:0});
+    //Edit values
+  },
+  "click .remove-treatment": function (e) {
+    e.preventDefault();
+    var treatmentName = $(e.target).parent().parent().next().find('.treatment-name').text(),
+        treatmentToDelete = Treatments.findOne({name : treatmentName},{_id:1, name:0});
+    Treatments.remove({_id:treatmentToDelete._id});
   }
 });

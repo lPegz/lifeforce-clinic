@@ -1,11 +1,12 @@
 <template name="treatmentConfig">
   {{> treatmentAdd }}
+  {{> treatmentList }}
 </template>
 
 
 <template name="treatmentAdd">
-  <form class="col-md-12 form-horizontal">
-    <div class="form-group">
+  <form class="col-md-12">
+    <div class="form-group form-horizontal">
       <label for="treatment-desc">Tratamento: </label>
       <input type="text" id="treatment-desc" class="form-control description" placeholder="Insira a descrição do tratamento"/>
       {{> treatmentTypeCombo }}
@@ -21,7 +22,7 @@
 <template name="treatmentTypeCombo">
   <br>
   <div class="form-group col-md-12">
-            <select class="form-control">
+            <select class="form-control" id="treatment-type">
               <option value="" selected="selected">Selecione um tipo</option>
               <option value="RPG">RPG</option>
               <option value="FISIO">Fisioterapia</option>
@@ -29,4 +30,31 @@
               <option value="ESTETICA">Estética</option>
             </select>
           </div>
+</template>
+
+<template name="treatmentList">
+  <div class= "treat-list">
+    <dl id="treatment-list" class="">
+      {{#each treatmentFetch}}
+        {{> treatmentItem}}
+      {{/each}}
+    </dl>
+  </div>
+</template>
+
+<template name="treatmentItem">
+    <dt>
+      <span class="treat">{{type}}</span>
+      <!-- <a href="#" class="edit-treatment pull-right">
+        <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+      </a> -->
+      <a href="#" class="remove-treatment pull-right">
+        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+      </a>
+    </dt>
+    <dd>
+      <span class="treatment-name">{{name}}</span>
+      <span class="treatment-base-price">{{basePrice}}</span>
+      <span class="treatment-dist-price">{{discountedPrice}}</span>
+    </dd>
 </template>
