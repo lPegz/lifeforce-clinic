@@ -1,0 +1,13 @@
+<template name='eventAdd'>
+	<form class="col-md-12">
+		<div class="form-group">
+			<label for="customer-name">Paciente: </label>
+			{{> pacienteCombo}}
+			<label for="customer-name">Inicio: </label>
+			<input type="datetime" class="form-control start" placeholder="Insira a data hora inicio"/>
+			<label for="customer-name">Fim: </label>
+			<input type="datetime" class="form-control end" placeholder="Insira a data hora fim"/>
+			<button type="submit" class="btn btn-default save-customer">Salvar</button>
+		</div>
+	</form>
+</template>
