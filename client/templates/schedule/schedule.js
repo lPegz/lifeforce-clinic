@@ -10,6 +10,11 @@ Template.schedule.helpers({
     			editable: true,
           defaultView: 'agendaWeek',
           header : {center: 'month,agendaWeek,agendaDay'},
+          allDaySlot: false,
+          minTime: '07:00:00',
+          maxTime: '21:00:00',
+          lang: 'pt-br',
+          slotEventOverlap: false,
           weekends:false,
           schedulerLicenseKey: 'GPL-My-Project-Is-Open-Source',
           eventClick : function () {
