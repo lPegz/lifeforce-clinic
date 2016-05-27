@@ -1,0 +1,28 @@
+{
+  "name": "lifeforce-clinic",
+  "description": "Solução para clínicas de pequeno porte.",
+  "scripts": {
+  },
+  "env": {
+    "MONGO_URL": {
+      "required": true
+    },
+    "ROOT_URL": {
+      "required": true
+    }
+  },
+  "formation": {
+    "web": {
+      "quantity": 1
+    }
+  },
+  "addons": [
+    "mongolab",
+    "mongolab"
+  ],
+  "buildpacks": [
+    {
+      "url": "https://github.com/jordansissel/heroku-buildpack-meteor.git"
+    }
+  ]
+}
