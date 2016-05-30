@@ -1,7 +1,7 @@
 <template name="eventAdd">
 	<form class="col-md-12">
 		<div class="form-group">
-			<label for="customer-name">Paciente: </label>
+			<label for="opt-customer-name">Paciente: </label>
 			{{> customerCombo}}
 			<label for="treatment-description">Tratamento: </label>
 			{{> treatmentCombo}}
@@ -15,11 +15,13 @@
 </template>
 
 <template name="customerCombo">
-	<select id="customer-name" class="form-group">
+	<select id="opt-customer-name" class="form-group">
+			<option value="0">Selecione</option>
 	</select>
 </template>
 
 <template name="treatmentCombo">
 	<select id="treatment-description" class="form-group">
+			<option value="0">Selecione</option>
 	</select>
 </template>

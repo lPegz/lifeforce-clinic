@@ -7,3 +7,5 @@ sAlert.config({
   stack: false,
   offset: 0
 });
+
+var _ = lodash;
