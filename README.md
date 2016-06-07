@@ -2,13 +2,15 @@
 
 Another test app for exploring the usages and more libraries of JavaScript within MeteorJS
 
+
 ### Version
  Still on development
 
 ### Tech
 * [MeteorJS] - The hottest framework for fast development.
 * [Atom] - A hackable text editor for the 21st Century
-* [Twitter Bootstrap] - great UI boilerplate for modern web apps
+* [fullCalendarJS] - A JavaScript event calendar. Customizable and open source.
+* [Twitter Bootstrap] - Great UI boilerplate for modern web apps.
 * [node.js] - evented I/O for the backend
 * [jQuery] - duh
 
@@ -38,3 +40,4 @@ $ meteor
    [Twitter Bootstrap]: <http://twitter.github.com/bootstrap/>
    [jQuery]: <http://jquery.com>
    [MeteorJS]: <https://www.meteor.com/>
+   [fullCalendarJS]: <http://fullcalendar.io/>
