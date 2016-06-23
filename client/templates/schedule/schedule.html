@@ -1,3 +1,7 @@
 <template name="schedule">
+  <button class="btn-info">+</button>
   {{> fullcalendar options}}
+  {{#with addEvent}}
+    {{> modalAddEvent }}
+  {{/with}}
 </template>

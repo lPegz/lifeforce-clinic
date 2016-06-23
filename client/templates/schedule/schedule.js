@@ -18,8 +18,8 @@ Template.schedule.helpers({
           weekends:false,
           schedulerLicenseKey: 'GPL-My-Project-Is-Open-Source',
           eventClick : function () {
-            console.log('clickei no evento!!');
             //Open Event Edit Mode
+            console.log('clickei no evento!!');
           },
           dayClick: function (e) {
             var date = e._d,
@@ -31,7 +31,8 @@ Template.schedule.helpers({
               $calendar.fullCalendar( 'changeView', 'agendaDay');
               $calendar.fullCalendar('gotoDate', date);
             } else {
-              //go to add event
+              //popup modal
+              Modal.show('modalAddEvent');
             }
           }
         };
