@@ -1,0 +1,12 @@
+.modal-body {
+  background-color: #ffffff;
+  height: 200px;
+}
+
+.modal-header {
+  background-color: #aaaaaa;
+}
+
+.modal-dialog {
+    background-color: #ffffff;
+}

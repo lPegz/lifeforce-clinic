@@ -27,12 +27,23 @@
 
 <template name="modalAddEvent">
 	<div class="modal fade" id="modalAddEvent">
-    <div class="modal-dialog modal-sm">
+    <div class="modal-dialog modal-sm" role="form">
 			<div class="modal-header">
 				<h3 id="myModalLabel">Adicione o evento</h3>
 			</div>
 			<div class="modal-body">
-	  			{{> eventAdd}}
+				<form class="col-md-12">
+					<div class="form-group">
+						<label for="opt-customer-name">Paciente: </label>
+						{{> customerCombo}}
+						<label for="treatment-description">Tratamento: </label>
+						{{> treatmentCombo}}
+						<label for="date-time-start">Inicio: </label>
+						<input type="datetime" id="date-time-start" class="form-control start" placeholder="Insira a data hora inicio"/>
+						<label for="date-time-end">Fim: </label>
+						<input type="datetime" id="date-time-end" class="form-control end" placeholder="Insira a data hora fim"/>
+					</div>
+				</form>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-primary" id="save">Salvar</button>
