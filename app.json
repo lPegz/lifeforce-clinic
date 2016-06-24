@@ -3,6 +3,9 @@
   "description": "Solução para clínicas de pequeno porte.",
   "scripts": {
   },
+  "engines": {
+    "node": "4.1.1"
+   },
   "env": {
     "MONGO_URL": {
       "required": true
