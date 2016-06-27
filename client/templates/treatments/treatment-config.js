@@ -26,7 +26,7 @@ Template.treatmentAdd.events({
         basePrice: treatmentBasePrice,
         discountedPrice: treatmentDiscountedPrice
       };
-      Meteor.call('insertTreatment', newTreatment, function () {
+      Meteor.call('insertTreatment', newTreatment, function (error) {
         if (error) {
           return sAlert.error(error.reason);
         } else {

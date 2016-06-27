@@ -1,10 +1,8 @@
-Template.customerCombo.onRendered(function () {
-  Meteor.subscribe('customers.public');
-  var customers_list = Customers.find().collection;
-  console.log('Customers: ', customers_list);
-  _.each(customers_list, function (customer) {
-    console.log('Customer: ', customer);
-  });
+Template.customerCombo.helpers({
+  customerList: function () {
+    Meteor.subscribe('customers.public');
+    return Customers.find();
+  }
 });
 
 Template.modalAddEvent.onRendered(function () {

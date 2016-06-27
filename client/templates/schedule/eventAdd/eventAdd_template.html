@@ -16,12 +16,18 @@
 <template name="customerCombo">
 	<select id="opt-customer-name" class="form-group">
 			<option value="0">Selecione</option>
+			{{#each customerList}}
+			  <option value="{{_id}}">{{name}}</option>
+			{{/each}}}}
 	</select>
 </template>
 
 <template name="treatmentCombo">
 	<select id="treatment-description" class="form-group">
 			<option value="0">Selecione</option>
+			{{#each treatmentList}}
+				<option value="{{_id}}">{{name}}</option>
+			{{/each}}}}
 	</select>
 </template>
 
