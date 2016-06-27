@@ -30,3 +30,5 @@ standard-minifier-js
 stevezhu:lodash
 msavin:mongol
 peppelg:bootstrap-3-modal
+momentjs:moment
+tsega:bootstrap3-datetimepicker

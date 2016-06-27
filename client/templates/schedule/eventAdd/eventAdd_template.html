@@ -38,10 +38,12 @@
 						{{> customerCombo}}
 						<label for="treatment-description">Tratamento: </label>
 						{{> treatmentCombo}}
-						<label for="date-time-start">Inicio: </label>
-						<input type="datetime" id="date-time-start" class="form-control start" placeholder="Insira a data hora inicio"/>
-						<label for="date-time-end">Fim: </label>
-						<input type="datetime" id="date-time-end" class="form-control end" placeholder="Insira a data hora fim"/>
+						<br />
+						<label for="date-time-start">Horário</label>
+						<div class="input-group" id="datetimepicker">
+					    <input class="set-due-date form-control" type="text"/>
+							<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+					  </div>
 					</div>
 				</form>
 			</div>

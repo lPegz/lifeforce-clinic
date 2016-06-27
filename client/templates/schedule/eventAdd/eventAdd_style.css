@@ -1,10 +1,12 @@
 .modal-body {
   background-color: #ffffff;
-  height: 200px;
+  height: 170px;
+  flex-flow: row;
 }
 
 .modal-header {
-  background-color: #aaaaaa;
+  background-color: #999999;
+  color: #333333;
 }
 
 .modal-dialog {
