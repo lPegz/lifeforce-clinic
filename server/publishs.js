@@ -1,13 +1,13 @@
 Meteor.publish('customers.public', function () {
-  return Customers.find({}, {
-    fields: Customers.name
-  });
+  return Customers.find({});
 });
+
 Meteor.publish('treatments.public', function () {
-  return Treatments.find();
+  return Treatments.find({});
 });
+
 Meteor.publish('sessions.public', function () {
-  return Sessions.find();
+  return Sessions.find({});
 });
 
 Router.configure({

@@ -3,6 +3,3 @@ Template.listCustomers.helpers({
     return Customers.find();
   }
 });
-
-Template.listCustomers.onRendered(function () {
-});

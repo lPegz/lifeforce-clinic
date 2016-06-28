@@ -39,6 +39,7 @@ Template.treatmentAdd.events({
 
 Template.treatmentList.helpers({
   treatmentFetch: function () {
+    Meteor.subscribe('treatments.public');
     return Treatments.find();
   }
 });
