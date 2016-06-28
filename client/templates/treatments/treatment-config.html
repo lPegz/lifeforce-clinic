@@ -5,23 +5,29 @@
 
 
 <template name="treatmentAdd">
-  <form class="col-md-12">
-    <div class="form-group form-horizontal">
-      <label for="treatment-desc">Tratamento: </label>
-      <input type="text" id="treatment-desc" class="form-control description" placeholder="Insira a descrição do tratamento"/>
-      {{> treatmentTypeCombo }}
-      <label for="base-price">Valor Base: </label>
-      <input type="value" id="base-price" class="form-control price base-price col-md-6" placeholder="Insira o valor base"/>
-      <label for="disc-price">Valor Desconto: </label>
-      <input type="value" id="disc-price" class="form-control price disc-price col-md-6" placeholder="Insira o valor com desconto"/>
-      <button type="submit" class="btn btn-default save-treatment">Salvar</button>
+  <form class="col-md-10 container-fluid">
+    <div class="form-group">
+      <div class="form-group">
+        <label for="treatment-desc">Tratamento: </label>
+        <input type="text" id="treatment-desc" class="form-control description" placeholder="Insira a descrição do tratamento"/>
+      </div>
+        {{> treatmentTypeCombo }}
+      <div class="form-group">
+        <label for="base-price">Valor Base: </label>
+        <input type="value" id="base-price" class="form-control price base-price col-md-6" placeholder="Insira o valor base"/>
+      </div>
+      <div class="form-group">
+        <label for="disc-price">Valor Desconto: </label>
+        <input type="value" id="disc-price" class="form-control price disc-price col-md-6" placeholder="Insira o valor com desconto"/>
+      </div>
+      <button class="btn btn-default save-treatment">Salvar</button>
     </div>
   </form>
 </template>
 
 <template name="treatmentTypeCombo">
   <br>
-  <div class="form-group col-md-12">
+  <div class="form-group">
             <select class="form-control" id="treatment-type">
               <option value="" selected="selected">Selecione um tipo</option>
               <option value="RPG">RPG</option>
@@ -33,7 +39,8 @@
 </template>
 
 <template name="treatmentList">
-  <div class= "treat-list">
+  <h3 class="col-xs-12">Tratamentos</h3>
+  <div class= "col-xs-12 container-fluid table treat-list">
     <dl id="treatment-list" class="">
       {{#each treatmentFetch}}
         {{> treatmentItem}}

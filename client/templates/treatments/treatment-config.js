@@ -9,7 +9,8 @@ Template.treatmentAdd.onRendered(function () {
 });
 
 Template.treatmentAdd.events({
-  'submit form': function () {
+  'click .save-treatment': function (e) {
+    e.preventDefault();
     var treatmentDescription = $('.description').val(),
       treatmentType = $('option:selected').val(),
       treatmentBasePrice = $('.base-price').val(),
