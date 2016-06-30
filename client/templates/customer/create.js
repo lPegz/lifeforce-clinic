@@ -1,5 +1,6 @@
 Template.customerCreate.events({
   'submit form': function () {
+    e.preventDefault();
     var customerName = $('.name').val(),
       customerPhone = $('.phone').val();
     if (_.isEmpty(customerName) || _.isNull(customerName) || _.isUndefined(
