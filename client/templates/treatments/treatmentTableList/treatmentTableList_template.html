@@ -1,0 +1,48 @@
+<template name='treatmentTableList'>
+	<table class="table table-hover table-condensed">
+		<thead>
+			<th>
+				Tipo
+			</th>
+			<th>
+				Nome
+			</th>
+			<th>
+				Preço
+			</th>
+			<th>
+				Preço com Desconto
+			</th>
+			<th>
+				Ações
+			</th>
+		</thead>
+		<tbody id="treatment-list">
+			{{#each treatmentFetch}}
+        {{> treatmentItemRow}}
+      {{/each}}
+		</tbody>
+	</table>
+</template>
+
+<template name="treatmentItemRow">
+	<tr>
+		<td>
+			<span class="treat">{{type}}</span>
+		</td>
+		<td>
+			<span class="treatment-name">{{name}}</span>
+		</td>
+		<td>
+			<span class="treatment-base-price">{{basePrice}}</span>
+		</td>
+		<td>
+			<span class="treatment-dist-price">{{discountedPrice}}</span>
+		</td>
+		<td>
+			<a href="#" class="remove-treatment pull-right">
+        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+      </a>
+		</td>
+	</tr>
+</template>

@@ -4,7 +4,7 @@ Template.treatmentAdd.onRendered(function () {
 
   //mask for price
   $('.price').inputmask({
-    'mask': 'R$ 999[9,99]'
+    'mask': 'R$ 99[99,99]'
   });
 });
 
