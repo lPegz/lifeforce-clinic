@@ -41,3 +41,8 @@ Template.schedule.helpers({
     };
   }
 });
+
+Template.schedule.onRendered(function () {
+  Meteor.subscribe('sessions.public');
+  console.log(Sessions.find({}).collection);
+});

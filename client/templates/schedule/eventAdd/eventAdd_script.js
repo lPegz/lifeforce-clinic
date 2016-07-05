@@ -36,7 +36,9 @@ Template.modalAddEvent.events({
       patient_id: 'xpto',
       treatment_id: 'xpto'
     };
-    Meteor.call('insertSession', newSession);
-    Modal.close();
+    Meteor.call('insertSession', newSession, function (e) {
+      console.log(e);
+    });
+    Modal.hide('modalAddEvent');
   }
 });
