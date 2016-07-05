@@ -1,5 +1,5 @@
 Template.customerCreate.events({
-  'submit form': function () {
+  'submit form': function (e) {
     e.preventDefault();
     var customerName = $('.name').val(),
       customerPhone = $('.phone').val();

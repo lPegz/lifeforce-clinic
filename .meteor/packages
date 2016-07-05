@@ -35,3 +35,5 @@ tsega:bootstrap3-datetimepicker
 audit-argument-checks
 accounts-ui
 accounts-password
+rzymek:moment-locale-pt-br
+rzymek:moment

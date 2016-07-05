@@ -80,6 +80,8 @@ reload@1.1.10
 retry@1.0.8
 routepolicy@1.0.11
 rzymek:fullcalendar@2.7.2
+rzymek:moment@2.8.3_10
+rzymek:moment-locale-pt-br@2.12.0
 sacha:spin@2.3.1
 service-configuration@1.0.10
 session@1.1.6
