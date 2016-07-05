@@ -2,12 +2,16 @@ Template.customerCombo.helpers({
   customerList: function () {
     Meteor.subscribe('customers.public');
     return Customers.find();
-  },
+  }
+});
+
+Template.treatmentCombo.helpers({
   treatmentList: function () {
-    Meteor.subscribe('treaments.public');
+    Meteor.subscribe('treatments.public');
     return Treatments.find();
   }
 });
+
 
 Template.modalAddEvent.onRendered(function () {
   var dateTime = $('body').data('datetime').format('DD/MM/YYYY hh:mm');
@@ -29,8 +33,10 @@ Template.modalAddEvent.events({
   'click .add-event': function () {
     var newSession = {
       dateTime: $('body').data('datetime').format('DD/MM/YYYY hh:mm'),
-      patient_id: treatment_id:
+      patient_id: 'xpto',
+      treatment_id: 'xpto'
     };
-    Meteor.call('insertSession', newSession)
+    Meteor.call('insertSession', newSession);
+    Modal.close();
   }
 });

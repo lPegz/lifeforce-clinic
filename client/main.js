@@ -7,5 +7,5 @@ sAlert.config({
   stack: false,
   offset: 0
 });
-moment.updateLocale('pt-br');
+
 var _ = lodash;
