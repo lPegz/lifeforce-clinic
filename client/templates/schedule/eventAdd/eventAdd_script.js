@@ -31,13 +31,14 @@ Template.modalAddEvent.onRendered(function () {
 
 Template.modalAddEvent.events({
   'click .add-event': function () {
+
     var newSession = {
       dateTime: $('body').data('datetime').format('DD/MM/YYYY hh:mm'),
-      patient_id: 'xpto',
+      patient_id: $(''),
       treatment_id: 'xpto'
     };
-    Meteor.call('insertSession', newSession, function (e) {
-      console.log(e);
+    Meteor.call('insertSession', newSession, function (response) {
+      console.log(response);
     });
     Modal.hide('modalAddEvent');
   }

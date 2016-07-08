@@ -43,6 +43,15 @@ Template.schedule.helpers({
 });
 
 Template.schedule.onRendered(function () {
+  var $calendar = $('#myCalendar');
   Meteor.subscribe('sessions.public');
-  console.log(Sessions.find({}).collection);
+  console.log(Sessions.find({}).fetch());
+  _(Sessions.find({}).fetch()).forEach(function (item) {
+    $calendar.fullCalendar('renderEvent', {
+      title: item["treatment_id"] + ": " + item["patient_id"],
+      start: new Date(item["startDate"]),
+      end: new Date(item["startDate"]).addHours(1)
+    }, true);
+  })
+
 });
