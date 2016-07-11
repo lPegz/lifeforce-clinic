@@ -41,3 +41,10 @@ Template.schedule.helpers({
     };
   }
 });
+
+Template.schedule.events({
+    'click add-event' : function () {
+      Modal.show('modalAddEvent');
+      $('body').data('datetime', e);
+    }
+})

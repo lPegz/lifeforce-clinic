@@ -30,14 +30,17 @@ Template.modalAddEvent.onRendered(function () {
 
 Template.modalAddEvent.events({
   'click .add-event': function () {
-    var endDate = moment($('body').data('datetime').format('DD/MM/YYYY hh:mm'),'DD/MM/YYYY HH:mm');
+    var title = $('#treatment-description option:selected').text() + " " + $('#opt-customer-name option:selected').text(),
+        endDate = moment($('body').data('datetime').format('DD/MM/YYYY hh:mm'),'DD/MM/YYYY HH:mm');
     endDate.add(1, 'hours');
     var newSession = {
+      title: title,
       start: moment($('body').data('datetime').format('DD/MM/YYYY hh:mm'),'DD/MM/YYYY HH:mm')._d,
       end: endDate._d,
       patient_id: $('#treatment-description option:selected').val(),
       treatment_id: $('#opt-customer-name option:selected').val()
     };
+    console.log(newSession);
     if(_.isDate(newSession.start) && _.isDate(newSession.end)) {
       Meteor.call('insertNewSession', newSession);
     } else {

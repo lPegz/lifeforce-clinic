@@ -27,5 +27,4 @@ Template.customerCreate.onRendered(function () {
   $('.phone').inputmask({
     'mask': '(99) 9999[9]-9999'
   });
-  console.log(Meteor.user());
 });
