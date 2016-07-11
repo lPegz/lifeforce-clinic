@@ -43,14 +43,27 @@ Template.schedule.helpers({
 });
 
 Template.schedule.onRendered(function () {
-  var $calendar = $('#myCalendar');
   Meteor.subscribe('sessions.public');
-  console.log(Sessions.find({}).fetch());
-  _(Sessions.find({}).fetch()).forEach(function (item) {
+  var $calendar = $('#myCalendar'),
+      session;
+  Meteor.call('getSessions', function (error, result) {
+      if(error) {
+        console.log('WHAT ', error);
+      } else {
+        session = result;
+        Session.set("data", result);
+      }
+  });
+
+  console.log(PSessions.find().fetch());
+  _(PSessions.find({}).fetch()).forEach(function (item) {
+    console.log(item);
+    var startDate = new Date(item["startDate"]),
+        endDate = startDate.setTime(startDate.getTime() + (60*60*1000));
     $calendar.fullCalendar('renderEvent', {
       title: item["treatment_id"] + ": " + item["patient_id"],
-      start: new Date(item["startDate"]),
-      end: new Date(item["startDate"]).addHours(1)
+      start: startDate,
+      end: endDate
     }, true);
   })
 
