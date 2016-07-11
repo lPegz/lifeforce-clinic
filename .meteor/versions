@@ -30,6 +30,7 @@ ecmascript@0.4.7
 ecmascript-runtime@0.2.12
 ejson@1.0.12
 email@1.0.15
+erasaur:meteor-lodash@4.0.0
 fastclick@1.0.12
 geojson-utils@1.0.9
 hot-code-push@1.0.4

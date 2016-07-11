@@ -30,16 +30,20 @@ Template.modalAddEvent.onRendered(function () {
 
 Template.modalAddEvent.events({
   'click .add-event': function () {
-    var endDate = moment($('body').data('datetime').format('DD/MM/YYYY hh:mm','DD/MM/YYYY HH:mm'));
-    console.log(moment($('body').data('datetime').format('DD/MM/YYYY hh:mm','DD/MM/YYYY HH:mm')));
+    var endDate = moment($('body').data('datetime').format('DD/MM/YYYY hh:mm'),'DD/MM/YYYY HH:mm');
     endDate.add(1, 'hours');
     var newSession = {
-      start: moment($('body').data('datetime').format('DD/MM/YYYY hh:mm'),'DD/MM/YYYY HH:mm'),
-      end: endDate,
+      start: moment($('body').data('datetime').format('DD/MM/YYYY hh:mm'),'DD/MM/YYYY HH:mm')._d,
+      end: endDate._d,
       patient_id: $('#treatment-description option:selected').val(),
       treatment_id: $('#opt-customer-name option:selected').val()
     };
-    Meteor.call('insertNewSession', newSession);
+    if(_.isDate(newSession.start) && _.isDate(newSession.end)) {
+      Meteor.call('insertNewSession', newSession);
+    } else {
+      sAlert.error('Data inválida');
+    }
+
     Modal.hide('modalAddEvent');
   }
 });
