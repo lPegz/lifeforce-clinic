@@ -36,7 +36,6 @@ Template.modalAddEvent.events({
       patient_id: $('#treatment-description option:selected').val(),
       treatment_id: $('#opt-customer-name option:selected').val()
     };
-    console.log(newSession);
     Meteor.call('insertSession', newSession);
     Modal.hide('modalAddEvent');
   }
