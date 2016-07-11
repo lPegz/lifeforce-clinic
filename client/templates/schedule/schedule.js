@@ -1,8 +1,21 @@
+var testEvents = function() {
+  return [{
+      title:'TESTE',
+      start: moment()._d,
+      end: moment().add(1,'hours')._d
+    }, {
+        title:'TESTE2',
+        start: moment().add(1,'day')._d,
+        end: moment().add(1,'day').add(1,'hours')._d
+      }]
+};
+
 Template.schedule.helpers({
   options: function () {
     Meteor.subscribe('sessions.public');
     var sessions = PSessions.find().fetch();
     console.log(sessions);
+    console.log(testEvents());
     return {
       header: {
         left: 'prev,next today',
@@ -18,7 +31,7 @@ Template.schedule.helpers({
       allDaySlot: false,
       minTime: '07:00:00',
       maxTime: '21:00:00',
-      events: sessions,
+      events: testEvents(),
       lang: 'pt-br',
       slotEventOverlap: false,
       weekends: false,
