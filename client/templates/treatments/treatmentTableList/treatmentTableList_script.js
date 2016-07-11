@@ -5,7 +5,6 @@ Template.treatmentTableList.helpers({
   }
 });
 
-
 Template.treatmentItemRow.events({
   "click .edit-treatment": function (e) {
     e.preventDefault();

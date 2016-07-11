@@ -12,9 +12,8 @@ Template.treatmentCombo.helpers({
   }
 });
 
-
 Template.modalAddEvent.onRendered(function () {
-  var dateTime = $('body').data('datetime').format('DD/MM/YYYY hh:mm');
+  var dateTime = $('body').data('datetime').format('DD/MM/YYYY HH:mm');
   console.log(dateTime);
   $('#datetimepicker').datetimepicker({
     format: 'DD/MM/YYYY HH:mm',
@@ -31,12 +30,16 @@ Template.modalAddEvent.onRendered(function () {
 
 Template.modalAddEvent.events({
   'click .add-event': function () {
+    var endDate = moment($('body').data('datetime').format('DD/MM/YYYY hh:mm','DD/MM/YYYY HH:mm'));
+    console.log(moment($('body').data('datetime').format('DD/MM/YYYY hh:mm','DD/MM/YYYY HH:mm')));
+    endDate.add(1, 'hours');
     var newSession = {
-      dateTime: $('body').data('datetime').format('DD/MM/YYYY hh:mm'),
+      start: moment($('body').data('datetime').format('DD/MM/YYYY hh:mm'),'DD/MM/YYYY HH:mm'),
+      end: endDate,
       patient_id: $('#treatment-description option:selected').val(),
       treatment_id: $('#opt-customer-name option:selected').val()
     };
-    Meteor.call('insertSession', newSession);
+    Meteor.call('insertNewSession', newSession);
     Modal.hide('modalAddEvent');
   }
 });

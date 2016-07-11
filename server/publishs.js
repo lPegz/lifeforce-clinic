@@ -1,13 +1,13 @@
 Meteor.publish('customers.public', function () {
-  return Customers.find({}).fetch();
+  return Customers.find({});
 });
 
 Meteor.publish('treatments.public', function () {
-  return Treatments.find({}).fetch();
+  return Treatments.find({});
 });
 
 Meteor.publish('sessions.public', function () {
-  return Sessions.find({}).fetch();
+  return PSessions.find({});
 });
 
 Router.configure({

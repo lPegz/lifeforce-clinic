@@ -1,5 +1,8 @@
 Template.schedule.helpers({
   options: function () {
+    Meteor.subscribe('sessions.public');
+    var sessions = PSessions.find().fetch();
+    console.log(sessions);
     return {
       header: {
         left: 'prev,next today',
@@ -15,14 +18,11 @@ Template.schedule.helpers({
       allDaySlot: false,
       minTime: '07:00:00',
       maxTime: '21:00:00',
+      events: sessions,
       lang: 'pt-br',
       slotEventOverlap: false,
       weekends: false,
       schedulerLicenseKey: 'GPL-My-Project-Is-Open-Source',
-      eventClick: function () {
-        //Open Event Edit Mode
-        console.log('clickei no evento!!');
-      },
       dayClick: function (e) {
         var date = e._d,
           $calendar = $('#myCalendar');
@@ -40,31 +40,4 @@ Template.schedule.helpers({
       }
     };
   }
-});
-
-Template.schedule.onRendered(function () {
-  Meteor.subscribe('sessions.public');
-  var $calendar = $('#myCalendar'),
-      session;
-  Meteor.call('getSessions', function (error, result) {
-      if(error) {
-        console.log('WHAT ', error);
-      } else {
-        session = result;
-        Session.set("data", result);
-      }
-  });
-
-  console.log(PSessions.find().fetch());
-  _(PSessions.find({}).fetch()).forEach(function (item) {
-    console.log(item);
-    var startDate = new Date(item["startDate"]),
-        endDate = startDate.setTime(startDate.getTime() + (60*60*1000));
-    $calendar.fullCalendar('renderEvent', {
-      title: item["treatment_id"] + ": " + item["patient_id"],
-      start: startDate,
-      end: endDate
-    }, true);
-  })
-
 });
