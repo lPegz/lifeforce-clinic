@@ -1,21 +1,34 @@
-var testEvents = function() {
+var testEvents = function () {
   return [{
-      title:'TESTE',
-      start: moment()._d,
-      end: moment().add(1,'hours')._d
-    }, {
-        title:'TESTE2',
-        start: moment().add(1,'day')._d,
-        end: moment().add(1,'day').add(1,'hours')._d
-      }]
+    title: 'TESTE',
+    start: moment()._d,
+    end: moment().add(1, 'hours')._d
+  }, {
+    title: 'TESTE2',
+    start: moment().add(1, 'day')._d,
+    end: moment().add(1, 'day').add(1, 'hours')._d
+  }]
+};
+var actualEvents = function () {
+  Meteor.subscribe('sessions.public');
+  var sessions = PSessions.find().fetch();
+  return _.map(sessions, function (session) {
+    var sess = {
+      title: session.title,
+      start: moment(session.start)._d,
+      end: moment(session.end)._d
+    };
+    return sess;
+  }).filter(function (el) {
+    return el.title != null;
+  });
 };
 
 Template.schedule.helpers({
   options: function () {
     Meteor.subscribe('sessions.public');
     var sessions = PSessions.find().fetch();
-    console.log(sessions);
-    console.log(testEvents());
+    console.log(actualEvents());
     return {
       header: {
         left: 'prev,next today',
@@ -31,7 +44,7 @@ Template.schedule.helpers({
       allDaySlot: false,
       minTime: '07:00:00',
       maxTime: '21:00:00',
-      events: testEvents(),
+      events: actualEvents(),
       lang: 'pt-br',
       slotEventOverlap: false,
       weekends: false,
@@ -56,8 +69,8 @@ Template.schedule.helpers({
 });
 
 Template.schedule.events({
-    'click add-event' : function () {
-      Modal.show('modalAddEvent');
-      $('body').data('datetime', e);
-    }
+  'click add-event': function () {
+    Modal.show('modalAddEvent');
+    $('body').data('datetime', e);
+  }
 })
