@@ -1,18 +1,3 @@
-var actualEvents = function () {
-  Meteor.subscribe('sessions.public');
-  var sessions = PSessions.find().fetch();
-  return _.map(sessions, function (session) {
-    var sess = {
-      title: session.title,
-      start: moment(session.start)._d,
-      end: moment(session.end)._d
-    };
-    return sess;
-  }).filter(function (el) {
-    return el.title != null;
-  });
-};
-
 Template.schedule.onCreated( () => {
   let template = Template.instance();
   template.subscribe('sessions.public');
@@ -26,6 +11,9 @@ Template.schedule.events({
 });
 
 Template.schedule.onRendered( function () {
+  Meteor.subscribe('sessions.public');
+  let data = PSessions.find().fetch();
+  console.log(data);
   $('#events-calendar').fullCalendar( {
     header: {
         left: 'prev,next today',
@@ -41,6 +29,7 @@ Template.schedule.onRendered( function () {
     allDaySlot: false,
     minTime: '07:00:00',
     maxTime: '21:00:00',
+    events: data,
     lang: 'pt-br',
     slotEventOverlap: false,
     weekends: false,
@@ -60,5 +49,15 @@ Template.schedule.onRendered( function () {
         $('body').data('datetime', e);
       }
     }
-  }
-)});
+  }).fullCalendar({
+    events( start, end, timezone, callback ) {
+      let data = PSessions.find().fetch().map( ( event ) => {
+        console.log(event);
+        return event;
+      });
+      if ( data ) {
+        callback( data );
+      }
+    }
+  });
+});
