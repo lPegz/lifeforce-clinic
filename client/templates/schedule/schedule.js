@@ -1,6 +1,5 @@
 Template.schedule.onCreated( () => {
-  let template = Template.instance();
-  template.subscribe('sessions.public');
+  Meteor.subscribe('sessions.public');
 });
 
 Template.schedule.events({
@@ -13,7 +12,6 @@ Template.schedule.events({
 Template.schedule.onRendered( function () {
   Meteor.subscribe('sessions.public');
   let data = PSessions.find().fetch();
-  console.log(data);
   $('#events-calendar').fullCalendar( {
     header: {
         left: 'prev,next today',
@@ -52,7 +50,6 @@ Template.schedule.onRendered( function () {
   }).fullCalendar({
     events( start, end, timezone, callback ) {
       let data = PSessions.find().fetch().map( ( event ) => {
-        console.log(event);
         return event;
       });
       if ( data ) {

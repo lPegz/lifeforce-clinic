@@ -1,3 +1,5 @@
+  
+
 Template.customerCombo.helpers({
   customerList: function () {
     Meteor.subscribe('customers.public');
@@ -14,7 +16,6 @@ Template.treatmentCombo.helpers({
 
 Template.modalAddEvent.onRendered(function () {
   var dateTime = $('body').data('datetime').format('DD/MM/YYYY HH:mm');
-  console.log(dateTime);
   $('#datetimepicker').datetimepicker({
     format: 'DD/MM/YYYY HH:mm',
     locale: 'pt-br',
@@ -25,11 +26,19 @@ Template.modalAddEvent.onRendered(function () {
   });
   var xpto = $('#datetimepicker').data({
     localDate: dateTime
-  }).datetimepicker('update').children('input').val(dateTime)
+  }).datetimepicker('update').children('input').val(dateTime);
 });
-
 Template.modalAddEvent.events({
   'click .add-event': function () {
+    let validated = false;
+    if($('#treatment-description option:selected').text().indexOf('Selecione') == -1) {
+      sAlert.error("Por favor selecione algum valor para o tratamento");
+      return;
+    }
+    if($('#opt-customer-name option:selected').text().indexOf('Selecione') == -1) {
+      sAlert.error("Por favor selecione algum valor para o cliente");
+      return;
+    }
     var title = $('#treatment-description option:selected').text() + " " + $('#opt-customer-name option:selected').text(),
         endDate = moment($('body').data('datetime').format('DD/MM/YYYY hh:mm'),'DD/MM/YYYY HH:mm');
     endDate.add(1, 'hours');
@@ -40,13 +49,11 @@ Template.modalAddEvent.events({
       patient_id: $('#treatment-description option:selected').val(),
       treatment_id: $('#opt-customer-name option:selected').val()
     };
-    console.log(newSession);
     if(_.isDate(newSession.start) && _.isDate(newSession.end)) {
-      Meteor.call('insertNewSession', newSession);
-    } else {
-      sAlert.error('Data inválida');
+      sAlert.error('Por favor selecione a data correta');
+      return;
     }
-
+    Meteor.call('insertNewSession', newSession);
     Modal.hide('modalAddEvent');
   }
 });
