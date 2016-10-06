@@ -32,8 +32,8 @@ peppelg:bootstrap-3-modal
 momentjs:moment
 tsega:bootstrap3-datetimepicker
 audit-argument-checks@1.0.7
-accounts-ui@1.1.9
-accounts-password@1.3.0
+accounts-ui
+accounts-password
 practicalmeteor:mocha
 erasaur:meteor-lodash
 shell-server
