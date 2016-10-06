@@ -1,5 +1,6 @@
-Template.schedule.onCreated( () => {
-  Meteor.subscribe('sessions.public');
+Template.schedule.onCreated( function () {
+  this.subscribe('sessions.public');
+  source = PSessions.find().fetch();
 });
 
 Template.schedule.events({
@@ -10,16 +11,15 @@ Template.schedule.events({
 });
 
 Template.schedule.onRendered( function () {
-  Meteor.subscribe('sessions.public');
-  let data = PSessions.find().fetch();
   $('#events-calendar').fullCalendar( {
     header: {
         left: 'prev,next today',
         center: 'title',
         right: 'month,agendaWeek,agendaDay'
       },
-    id: '',
-    editable: true,
+    id: 'calendar-events',
+    editable: false,
+    events: source,
     defaultView: 'agendaWeek',
     header: {
       center: 'month,agendaWeek,agendaDay'
@@ -27,7 +27,6 @@ Template.schedule.onRendered( function () {
     allDaySlot: false,
     minTime: '07:00:00',
     maxTime: '21:00:00',
-    events: data,
     lang: 'pt-br',
     slotEventOverlap: false,
     weekends: false,
@@ -47,14 +46,5 @@ Template.schedule.onRendered( function () {
         $('body').data('datetime', e);
       }
     }
-  }).fullCalendar({
-    events( start, end, timezone, callback ) {
-      let data = PSessions.find().fetch().map( ( event ) => {
-        return event;
-      });
-      if ( data ) {
-        callback( data );
-      }
-    }
-  });
+    });
 });

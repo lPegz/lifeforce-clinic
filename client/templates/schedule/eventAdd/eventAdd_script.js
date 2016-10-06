@@ -31,11 +31,11 @@ Template.modalAddEvent.onRendered(function () {
 Template.modalAddEvent.events({
   'click .add-event': function () {
     let validated = false;
-    if($('#treatment-description option:selected').text().indexOf('Selecione') == -1) {
+    if($('#treatment-description option:selected').text().indexOf('Selecione') != -1) {
       sAlert.error("Por favor selecione algum valor para o tratamento");
       return;
     }
-    if($('#opt-customer-name option:selected').text().indexOf('Selecione') == -1) {
+    if($('#opt-customer-name option:selected').text().indexOf('Selecione') != -1) {
       sAlert.error("Por favor selecione algum valor para o cliente");
       return;
     }
@@ -49,7 +49,7 @@ Template.modalAddEvent.events({
       patient_id: $('#treatment-description option:selected').val(),
       treatment_id: $('#opt-customer-name option:selected').val()
     };
-    if(_.isDate(newSession.start) && _.isDate(newSession.end)) {
+    if(!_.isDate(newSession.start) || !_.isDate(newSession.end)) {
       sAlert.error('Por favor selecione a data correta');
       return;
     }
