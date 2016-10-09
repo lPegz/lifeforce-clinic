@@ -6,7 +6,11 @@ body {
 }
 
 .btn-primary {
-  background-color: seagreen
+  background-color: #74ad6b; 
+}
+
+.btn-primary:hover {
+ background-color: seagreen;
 }
 
 .form-signin {
